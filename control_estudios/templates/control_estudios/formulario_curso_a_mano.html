@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Crear curso
+
+{% endblock titulo %}
+
+{% block contenido %}
+<form method="post">
+ {% csrf_token %} 
+ <p>Nombre del curso</p>
+ <input type="text" name="nombre">
+ <p>Comision</p>
+ <input type="number" name="comision" step="1">
+ <input type="submit" value="Enviar">
+
+ <a> href="{% url 'cursos' %}" Volver a la lista </a>
+</form>
+{% endblock contenido %}
