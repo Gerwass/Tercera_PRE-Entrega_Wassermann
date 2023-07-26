@@ -6,8 +6,6 @@
 
 {% block contenido %}
 
-
-
     <h3>Cursos:</h3>
     <a href = "{% url 'crear_cursos' %}"> Crear curso <br>
     <a href = "{% url 'lista_cursos' %}"> Ver todos
@@ -24,7 +22,8 @@
 
 
     </li>
-
+    {% empty %}
+    <p>No se encontraron estudiantes.</p>
 
     {% endfor %}
     </ul>

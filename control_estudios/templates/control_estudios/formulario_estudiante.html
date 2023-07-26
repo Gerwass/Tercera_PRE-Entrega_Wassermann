@@ -2,20 +2,21 @@
 
 {% block titulo %}
 
-Crear curso
+Registro de estudiantes
 
 {% endblock titulo %}
 
 {% block contenido %}
 
-<h3>Crear curso</h3>
+<h3>Registrese</h3>
+
 <form method="post">
  {% csrf_token %}
  {{ formulario.as_p }}
  {{ formulario.errors }}
  <input type="submit" value="Enviar" />
 <br><br>
- <a href = "{% url 'lista_cursos' %}"> Volver
+ <a href = "{% url 'lista_estudiante' %}"> Volver a estudiantes
 </a>
 </form>
 {% endblock contenido %}
