@@ -1,0 +1,22 @@
+{%extends "base.html"%}
+
+<title>{% block titulo%}
+  Profesores
+{% endblock titulo%}</title>
+
+{% block contenido %}
+
+    <h3>Nuestros profesores:</h3>
+    <ul>
+    {% for profesor in profesores %}
+    <li>
+      {{profesor.apellido}}, {{profesor.nombre}} 
+
+    </li>
+
+
+    {% endfor %}
+    </ul>
+    
+    
+{% endblock contenido %}

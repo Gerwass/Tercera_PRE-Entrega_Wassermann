@@ -4,13 +4,13 @@ from django.urls import reverse
 from control_estudios.forms import CursoFormulario
 
 
-from control_estudios.models import Curso, Estudiante
+from control_estudios.models import Curso, Estudiante, Profesor
 
 
 # Create your views here.
 def listar_estudiantes(request):
     contexto = {
-        "Profesor":"Pedro",
+        
         "estudiantes": Estudiante.objects.all()
     }
     http_response = render(
@@ -35,31 +35,17 @@ def listar_cursos(request):
     )
     return http_response
 
-
-
-def crear_cursos_version_1(request):
-   
-
-   """Vista no usada
-
-   """
-   if request.method == "POST": #Es un post, user quiere crear curso
-       data = request.POST #Dicc con la data del form
-       nombre = data['nombre']
-       comision = data['comision']
-       #Crea un curso en RAM
-       curso = Curso(nombre=nombre, comision=comision)
-       #Lo guarda en la base de datos
-       curso.save()
-       #Envio al usuario a la lista de cursos
-       url_exitosa = reverse('lista_cursos')
-       return redirect(url_exitosa)
-   else:  # GET
-        http_response = render(
-            request=request,
-            template_name='control_estudios/formulario_curso_a_mano.html',
-        )
-        return http_response
+def listar_profesores(request):
+    contexto = {
+        
+        "profesores": Profesor.objects.all()
+    }
+    http_response = render(
+    request=request,
+    template_name='control_estudios/lista_profesores.html',
+    context=contexto,
+    )
+    return http_response
 
 
 

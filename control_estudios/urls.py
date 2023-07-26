@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from control_estudios.views import (listar_estudiantes,listar_cursos,crear_cursos, buscar_cursos)
+from control_estudios.views import (listar_estudiantes,listar_cursos,crear_cursos, buscar_cursos,listar_profesores)
 #URLS ESPECIFICAS DE LA APP
 
 urlpatterns = [
@@ -25,4 +25,5 @@ urlpatterns = [
     path("cursos/",listar_cursos, name ="lista_cursos"),
     path("crear-curso/", crear_cursos, name = "crear_cursos"),
     path("buscar-cursos/", buscar_cursos, name="buscar_cursos"),
+    path("profesores/",listar_profesores, name = "lista_profesores")
 ]
