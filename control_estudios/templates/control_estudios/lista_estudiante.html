@@ -15,18 +15,16 @@
       {% csrf_token %}
       <input type="text" name="busqueda">
       <input type="submit" value="Buscar por apellido">
-    <ul>
-    {% for estudiante in estudiantes %}
-    <li>
-      {{estudiante.apellido}},{{estudiante.nombre}} 
-
-    </li>
-    {% empty %}
-    <p>No se encontraron estudiantes.</p>
-
-    {% endfor %}
-    </ul>
+    </form>
     
-    
+    {% if estudiantes %}
+        <ul>
+            {% for estudiante in estudiantes %}
+                <li>{{ estudiante.apellido }}, {{ estudiante.nombre }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron estudiantes.</p>
+    {% endif %}
 {% endblock contenido %}
     
