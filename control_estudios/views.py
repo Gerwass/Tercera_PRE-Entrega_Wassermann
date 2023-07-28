@@ -76,13 +76,13 @@ def crear_estudiante(request):
 
 def buscar_estudiante(request):
     if request.method == "POST":
-       data = request.POST
-       busqueda = data.get("busqueda")
-       estudiante = Estudiante.objects.filter(apellido__contains=busqueda)
+       
+       busqueda = request.POST.get("busqueda")
+       estudiantes = Estudiante.objects.filter(apellido__contains=busqueda)
     else: 
-       estudiante = []
+       estudiantes = []
     contexto = {
-           "estudiante": estudiante,
+           "estudiantes": estudiantes,
        }
     http_response = render(
     request=request,
@@ -145,7 +145,7 @@ def crear_profesor(request):
            dni = data["dni"]
            
            profesor = Profesor(nombre=nombre, apellido=apellido, email=email, dni=dni)  # lo crean solo en RAM
-           Profesor.save()  # Lo guardan en la Base de datos
+           profesor.save()  # Lo guardan en la Base de datos
 
            # Redirecciono al usuario a la lista de cursos
            url_exitosa = reverse('lista_profesores')  # estudios/cursos/
@@ -153,8 +153,25 @@ def crear_profesor(request):
    else:  # GET
         formulario = ProfesorFormulario()
         http_response = render(
-       request=request,
-       template_name='control_estudios/formulario_profesor.html',
-       context={'formulario': formulario}
-   )
+        request=request,
+        template_name='control_estudios/formulario_profesor.html',
+        context={'formulario': formulario}
+        )
    return http_response
+
+def buscar_profesor(request):
+    if request.method == "POST":
+       
+       busqueda = request.POST.get("busqueda")
+       profesores = Profesor.objects.filter(apellido__contains=busqueda)
+    else: 
+       profesores = []
+    contexto = {
+           "profesores": profesores,
+       }
+    http_response = render(
+    request=request,
+    template_name='control_estudios/lista_profesores.html',
+    context=contexto,
+       )
+    return http_response

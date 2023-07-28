@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 
 from control_estudios.views import (listar_estudiantes,listar_cursos,crear_cursos, buscar_cursos,crear_estudiante,listar_profesores,
-                                    buscar_estudiante)
+                                    buscar_estudiante,crear_profesor, buscar_profesor)
 #URLS ESPECIFICAS DE LA APP
 
 urlpatterns = [
@@ -29,4 +29,6 @@ urlpatterns = [
     path("eprofesores/",listar_profesores, name ="lista_profesores"),
     path("registro-estudiante/",crear_estudiante, name = "crear_estudiante"),
     path("buscar-estudiante/",buscar_estudiante, name = "buscar_estudiante"),
+    path("crear-profesores/",crear_profesor, name = "crear_profesores"),
+    path("buscar-profesor/",buscar_profesor, name = "buscar_profesor"),
 ]

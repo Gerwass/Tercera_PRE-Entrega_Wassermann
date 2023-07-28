@@ -10,18 +10,16 @@ class EstudianteFormulario(forms.Form):
    apellido=forms.CharField(required=True,max_length=256)
    nombre=forms.CharField(required=True, max_length=256)
    email=forms.EmailField(required=True)
-   #telefono=forms.CharField(max_length=20,null=True)
-   dni=forms.CharField(max_length=32)
-   #fecha_nacimiento=forms.DateField(required=True, null=True)
+   telefono=forms.CharField(max_length=20)
+   dni=forms.CharField(required=True,max_length=32)
+   fecha_nacimiento=forms.DateField(required=True)
 
 
 class ProfesorFormulario(forms.Form):
     apellido=forms.CharField(required=True, max_length=256)
     nombre=forms.CharField(required=True, max_length=256)
-'''
-    email=forms.EmailField(null=True)
-    telefono=forms.CharField(max_length=20,null=True)
-    dni=forms.CharField(max_length=32)
-    fecha_nacimiento=forms.DateField(required=True, null=True)
+    email=forms.EmailField(required=True)
+    telefono=forms.CharField(max_length=20)
+    dni=forms.CharField(required=True,max_length=32)
+    fecha_nacimiento=forms.DateField(required=True)
     profesion=forms.CharField(max_length=128)
-'''
