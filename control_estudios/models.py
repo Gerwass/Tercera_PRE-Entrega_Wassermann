@@ -33,8 +33,4 @@ class Profesor(models.Model):
         return f"{self.apellido},{self.nombre}"
 
 
-class Entregable(models.Model):
-    pass
-    #nombre=
-    #fecha_entrega=
-    #esta_aprobado=
+

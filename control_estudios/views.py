@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from control_estudios.forms import CursoFormulario,EstudianteFormulario, ProfesorFormulario
@@ -35,6 +34,7 @@ def listar_cursos(request):
     )
     return http_response
 
+
 def listar_profesores(request):
     contexto = {
         
@@ -58,8 +58,9 @@ def crear_estudiante(request):
            apellido = data["apellido"]
            email = data["email"]
            dni = data["dni"]
+           telefono = data["telefono"]
            
-           estudiante = Estudiante(nombre=nombre, apellido=apellido, email=email, dni=dni)  # lo crean solo en RAM
+           estudiante = Estudiante(nombre=nombre, apellido=apellido, email=email, dni=dni, telefono=telefono)  # lo crean solo en RAM
            estudiante.save()  # Lo guardan en la Base de datos
 
            # Redirecciono al usuario a la lista de cursos
@@ -73,6 +74,7 @@ def crear_estudiante(request):
        context={'formulario': formulario}
    )
    return http_response
+
 
 def buscar_estudiante(request):
     if request.method == "POST":
@@ -90,8 +92,6 @@ def buscar_estudiante(request):
     context=contexto,
        )
     return http_response
-
-
 
 
 def crear_cursos(request):
@@ -133,6 +133,7 @@ def buscar_cursos(request):
        )
        return http_response
    
+
 def crear_profesor(request):
    if request.method == "POST":
        formulario = ProfesorFormulario(request.POST)
@@ -143,8 +144,11 @@ def crear_profesor(request):
            apellido = data["apellido"]
            email = data["email"]
            dni = data["dni"]
+           profesion = data["profesion"]
+           telefono = data["telefono"]
            
-           profesor = Profesor(nombre=nombre, apellido=apellido, email=email, dni=dni)  # lo crean solo en RAM
+           profesor = Profesor(nombre=nombre, apellido=apellido, email=email, dni=dni, profesion=profesion,
+                               telefono=telefono)  # lo crean solo en RAM
            profesor.save()  # Lo guardan en la Base de datos
 
            # Redirecciono al usuario a la lista de cursos
@@ -158,6 +162,7 @@ def crear_profesor(request):
         context={'formulario': formulario}
         )
    return http_response
+
 
 def buscar_profesor(request):
     if request.method == "POST":
